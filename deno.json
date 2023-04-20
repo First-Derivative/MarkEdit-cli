@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "start": "deno run --allow-env --allow-read --allow-run --lock=deno.lock markedit.ts",
+    "build": "deno compile --allow-env --allow-read --allow-run --lock=deno.lock -o build/markdwn markedit.ts"
+  }
+
+}
