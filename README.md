@@ -25,6 +25,8 @@ Features
 
 Installation
 ------------
+<br/>
+
 ### Install Deno
 This step is only required if you don’t already have deno installed. Follow the guide [here](https://deno.land/manual@v1.32.5/getting_started/installation) or run either of these commands (MacOs):
 
@@ -33,6 +35,7 @@ This step is only required if you don’t already have deno installed. Follow th
 ` brew install deno`
 
 <br/>
+
 ### Installing the CLI 
 1. Clone repo `git clone git@github.com:First-Derivative/MarkEdit-cli.git`
 2. Run `deno task build` which compiles `markedit.ts` into an executable `markdwn` in `/build`
