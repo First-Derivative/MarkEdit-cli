@@ -25,34 +25,48 @@ Features
 
 Installation
 ------------
-<br/>
-
 ### Install Deno
 This step is only required if you don’t already have deno installed. Follow the guide [here](https://deno.land/manual@v1.32.5/getting_started/installation) or run either of these commands (MacOs):
 
 `$ curl -fsSL https://deno.land/x/install/install.sh | sh`
-<br/>OR<br/>
+<br/>or via brew<br/>
 ` brew install deno`
 
 <br/>
 
 ### Installing the CLI 
 1. Clone repo `git clone git@github.com:First-Derivative/MarkEdit-cli.git`
-2. Run `deno task build` which compiles `markedit.ts` into an executable `markdwn` in `/build`
-3. Add the executable to your PATH, `export PATH=$PATH:$HOME/{{PATH_TO_REPO_)}}/build` (add this line to your `.bashrc`/`.zshrc`)
+2. Run `deno task install` which compiles `markedit.ts` into an executable `markdwn` in `$HOME/.deno/bin/` (the default [DENO_INSTALL_ROOT](https://deno.land/manual@v1.32.5/getting_started/setup_your_environment#environment-variables))
+3. Ensure the directory `$HOME/.deno/bin/` is exported to your `PATH`
 
 <br/>
+
+### Exporting deno to your path
+Update your `.bashrc` or `.zshrc` file to include your deno install paths to your `PATH`.
+To do so, add this line to your `.bashrc` or `.zshrc`
+`export PATH=“/$HOME/.deno/bin:$PATH"`
+
+Or run this command:<br/>
+(if using `.bashrc`)
+```bash
+echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.bashrc
+```
+
+(if using `.zshrc`)
+```bash
+echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.zshrc
+```
 
 Customization
 -------------
 
-If you would like to access the cli via some command other than `markdwn` then you just need rename the output of the compilation for the build task in `deno.json`
+If you would like to access the cli via some command other than `markdwn` then you just need rename the output of the compilation for the install task in `deno.json`
 ```javascript
 // demo.json 
 {
   "tasks": {
  	...
-    "build": "deno compile --allow-env --allow-read --allow-run --lock=deno.lock -o build/{{NAME_OF_OUTPUT}} markedit.ts"
+    "install": "deno install --allow-run -f -n {{COMMAND_NAME}} markedit.ts"
   }
 }
 ```
@@ -67,6 +81,5 @@ I will also take any queries on ashraff.hatz@gmail.com
 
 Planned Features
 ----------------
-1. Auto-installation script into .bashrc/.zshrc
 2. Create file on no file found
 3. Command that initializes README.md with template and opens it with MarkEdit

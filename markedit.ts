@@ -20,6 +20,8 @@ export const openFileWithMarkEdit = async (defaultArg?: string) => {
     }
   });
 
+
+
   if (earlyExit) return null;
 
   if (inputArgs._.length > 0) {
@@ -40,7 +42,7 @@ export const openFileWithMarkEdit = async (defaultArg?: string) => {
     stderr: "piped",
   });
 
-  const [status, stdout, stderr] = await Promise.all([check.status(), check.output(), check.stderrOutput()]);
+  const [stderr] = await Promise.all([check.stderrOutput()]);
   check.close();
 
   if (stderr.length > 0) {
