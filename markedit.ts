@@ -20,8 +20,6 @@ export const openFileWithMarkEdit = async (defaultArg?: string) => {
     }
   });
 
-
-
   if (earlyExit) return null;
 
   if (inputArgs._.length > 0) {
